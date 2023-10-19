@@ -13,19 +13,25 @@ int main()
 	printf("Test der Ulam-Folge\n_________\n");
 
 	ulam_test(5);
-	ulam_test(7);
 
-	printf("Aufgabe: ulam_max\n_________\n");
+	printf("\nAufgabe: ulam_max\n_________\n");
 
 	printf("%d\n", ulam_max(5));
 	printf("%d\n", ulam_max(7));
 	printf("%d\n", ulam_max(0));
 	printf("%d\n", ulam_max(2147483647));
 
-	printf("Aufgabe: ulam_twins\n_________\n");
+	printf("\nAufgabe: ulam_twins\n_________\n");
 
 	printf("%d\n", ulam_twins(5));
 	printf("%d\n", ulam_twins(6));
+
+    printf("\nAufgabe: ulam_multiples\n_________\n");
+
+    printf("%d\n", ulam_multiples(10, 2));
+    printf("%d\n", ulam_multiples(1000, 3));
+    printf("%d\n", ulam_multiples(108, 3));
+    printf("%d\n", ulam_multiples(391, 6));
 }
 
 int ulam_max(int a0)
@@ -80,7 +86,7 @@ int ulam_twins(int limit)
 	return output;
 }
 
-int multiples(int limit, int number)
+int ulam_multiples(int limit, int number)
 {
 	return 0;
 }
