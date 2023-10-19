@@ -4,7 +4,9 @@ void ulam_test(int a0);
 
 int ulam_max(int a0);
 
-int ulam_twin(int limit);
+int ulam_twins(int limit);
+
+int ulam_multiples(int limit, int number);
 
 int main()
 {
@@ -16,6 +18,9 @@ int main()
 	printf("%d\n", ulam_max(7));
 	printf("%d\n", ulam_max(0));
 	printf("%d\n", ulam_max(2147483647));
+
+	printf("%d\n", ulam_twins(5));
+	printf("%d\n", ulam_twins(6));
 }
 
 int ulam_max(int a0)
@@ -48,7 +53,30 @@ int ulam_max(int a0)
 
 int ulam_twins(int limit)
 {
-	return 0;
+	int index = 1;
+	int val1;
+	int val2;
+	int output = -1;
+
+	for(; index < limit; index++)
+	{
+		val1 = ulam_max(index);
+		val2 = ulam_max(index + 1);
+
+		if (val1 == val2){
+			output = index;
+		}
+
+
+	}
+
+
+	return output;
+}
+
+int multiples(int limit, int number)
+{
+	return 0
 }
 
 void ulam_test(int a0)
