@@ -46,7 +46,10 @@ int ulam_max(int a0)
 	return -1;
 }
 
-int
+int ulam_twins(int limit)
+{
+	return 0;
+}
 
 void ulam_test(int a0)
 {
