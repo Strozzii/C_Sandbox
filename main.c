@@ -15,7 +15,12 @@ int main()
 		num = num / 2;
 	}
 
-	printf("%d", num);
+	printf("%d\n", num);
+
+	double x = 3.11;
+	int y = 5;
+
+	printf("%f", (float)y);
 
 	return 0;
 }
