@@ -20,7 +20,9 @@ int main()
 	double x = 3.11;
 	int y = 5;
 
-	printf("%f", (float)y);
+	printf("%f\n", (float)y);
+
+	printf("%o", 42);
 
 	return 0;
 }
