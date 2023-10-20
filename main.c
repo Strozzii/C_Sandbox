@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdbool.h>
 
 void ulam_test(int a0);
 
@@ -79,16 +80,45 @@ int ulam_twins(int limit)
 			output = index;
 		}
 
-
 	}
-
 
 	return output;
 }
 
 int ulam_multiples(int limit, int number)
 {
-	return 0;
+	if (number == 1)
+	{
+		return limit;
+	}
+	else if (number < 1 || number > limit)
+	{
+		return -1;
+	}
+
+	int output = -1;
+
+	for (int index = 1; index < limit - number + 2; index++)
+	{
+		int count = 1;
+		bool isTwin = true;
+		for (int i = index; (i < index + number - 1) && isTwin; i++)
+		{
+			int v1 = ulam_max(i);
+			int v2 = ulam_max(i + 1);
+			isTwin = (v1 == v2);
+			if (isTwin)
+			{
+				count++;
+			}
+			if (count == number)
+			{
+				output = index;
+			}
+		}
+	}
+
+	return output;
 }
 
 void ulam_test(int a0)
@@ -96,7 +126,7 @@ void ulam_test(int a0)
 	if (a0 == 1)
 	{
 		printf("%d\n", 1);
-		printf("Folge ist terminiert!\n\n");
+		printf("Folge ist terminiert!\n");
 	}
 	else if (a0 % 2 == 1)
 	{
