@@ -74,7 +74,7 @@ int ulam_multiples(int limit, int number)
 		return -1;
 	}
 
-	int output = -1;            /* Der zurückgegebene Wert, wenn ein Zwilling gefunden wurde, sonst -1 */
+	int output = -1;            /* Der zurückgegebene Wert, wenn ein Mehrling gefunden wurde, sonst -1 */
 
 	/*
 	 * Durchlauf beginnend von 1 bis limit - number + 2, wo nach einem ULAM-Mehrling gesucht wird in der Schrittweite 1.
