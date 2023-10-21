@@ -74,40 +74,31 @@ int ulam_multiples(int limit, int number)
 		return -1;
 	}
 
-	int output = -1;            /* Der zurückgegebene Wert, wenn ein Mehrling gefunden wurde, sonst -1 */
+	int output = -1;                 /* Speichert den Index des letzten Mehrlings, falls gefunden, sonst -1 */
+	int count = 1;                    /* Zählt die Anzahl der aufeinanderfolgenden gleichen Max-Werte */
 
-	/*
-	 * Durchlauf beginnend von 1 bis limit - number + 2, wo nach einem ULAM-Mehrling gesucht wird in der Schrittweite 1.
-	 * Es kann nicht durch das gesamte Intervall iteriert werden, weil die innere for-Schleife sonst aus dem Intervall
-	 * fällt.
-	 */
-	for (int index = 1; index < limit - number + 2; index++)
+	/* Durchlauf aller Indizes von 1 bis auschließlich limit */
+	for (int i = 1; i < limit; i++)
 	{
-		int count = 1;            /* Anzahl der Werte im aktuellen Mehrling */
-		bool isTwin = true;        /* Definiert die Abbruchbedingung für die for-Schleife */
-
 		/*
-		 * Überprüft paarweise in einem Sub-Intervall mit der Größe number, ob alle ULAM-Werte gleich sind.
-		 * Die for-Schleife stoppt, wenn es sich nicht um ein Mehrling handelt und setzt die äußere for-Schleife fort.
+		 * Prüfe, ob zwei benachbarte Werte denselben Max-Wert haben.
+		 * Wenn true, erhöhe count um 1 und prüfe, ob count der gesuchten Anzahl entspricht.
+		 * Wenn false, setze count zurück auf 1.
 		 */
-		for (int i = index; (i < index + number - 1) && isTwin; i++)
+		if (ulam_max(i) == ulam_max(i + 1))
 		{
-			/*
-			 * Überprüft, ob es sich beim aktuellen Paar um ein Zwilling handelt.
-			 * Wenn true, dann erhöhe count um 1.
-			 */
-			isTwin = (ulam_max(i) == ulam_max(i + 1));
-			if (isTwin)
-			{
-				count++;
-			}
-
-			/* Wenn count gleich number ist, dann wurde ein Mehrling gefunden und wird in output gespeichert. */
+			count++;
+			/* Falls count der gesuchten Anzahl entspricht, dann speichere den Startindex des Mehrlings. */
 			if (count == number)
 			{
-				output = index;
+				output = i - number + 2;
 			}
 		}
+		else
+		{
+			count = 1;
+		}
+
 	}
 
 	return output;
