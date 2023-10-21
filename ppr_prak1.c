@@ -90,22 +90,3 @@ int ulam_multiples(int limit, int number)
 
 	return output;
 }
-
-void ulam_test(int a0)
-{
-	if (a0 == 1)
-	{
-		printf("%d\n", 1);
-		printf("Folge ist terminiert!\n");
-	}
-	else if (a0 % 2 == 1)
-	{
-		printf("%d\n", a0);
-		ulam_test(3 * a0 + 1);
-	}
-	else if (a0 % 2 == 0)
-	{
-		printf("%d\n", a0);
-		ulam_test(a0 / 2);
-	}
-}

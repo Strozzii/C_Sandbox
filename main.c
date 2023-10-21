@@ -3,10 +3,6 @@
 
 int main()
 {
-	printf("Test der Ulam-Folge\n_________\n");
-
-	ulam_test(5);
-
 	printf("\nAufgabe: ulam_max\n_________\n");
 
 	printf("%d\n", ulam_max(5));

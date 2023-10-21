@@ -12,5 +12,3 @@ int ulam_max(int);
 int ulam_twins(int);
 
 int ulam_multiples(int, int);
-
-void ulam_test(int);
