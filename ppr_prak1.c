@@ -3,7 +3,6 @@
 //
 #include "ppr_prak1.h"
 #include <stdbool.h>
-#include <stdio.h>
 
 int ulam_max(int a0)
 {
