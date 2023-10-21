@@ -1,4 +1,3 @@
-#include <stdbool.h>
 #include "ppr_prak1.h"
 
 int ulam_max(int a0)
