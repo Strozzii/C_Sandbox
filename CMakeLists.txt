@@ -4,4 +4,4 @@ project(PPR C)
 set(CMAKE_C_STANDARD 11)
 
 add_executable(PPR main.c
-        ppr_prak1.c)
+        src/ppr_prak1.c)

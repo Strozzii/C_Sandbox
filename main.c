@@ -8,7 +8,7 @@
  */
 
 #include <stdio.h>
-#include "ppr_prak1.h"
+#include "src/ppr_prak1.h"
 
 /**
  * Entry-Point des Programms.
