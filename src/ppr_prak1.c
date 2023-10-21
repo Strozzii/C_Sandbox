@@ -39,8 +39,8 @@ int ulam_max(int a0)
 
 int ulam_twins(int limit)
 {
-	int index;          		/* Index, um alle Werte im Intervall durchlaufen zu können */
-	int output = -1;    		/* Der zurückgegebene Wert, wenn ein Zwilling gefunden wurde, sonst -1 */
+	int index;                /* Index, um alle Werte im Intervall durchlaufen zu können */
+	int output = -1;            /* Der zurückgegebene Wert, wenn ein Zwilling gefunden wurde, sonst -1 */
 
 	/* Durchlauf beginnend von 1 bis limit - 1, wo nach einem ULAM-Zwilling gesucht wird in der Schrittweite 1. */
 	for (index = 1; index < limit; index++)
@@ -74,7 +74,7 @@ int ulam_multiples(int limit, int number)
 		return -1;
 	}
 
-	int output = -1;			/* Der zurückgegebene Wert, wenn ein Zwilling gefunden wurde, sonst -1 */
+	int output = -1;            /* Der zurückgegebene Wert, wenn ein Zwilling gefunden wurde, sonst -1 */
 
 	/*
 	 * Durchlauf beginnend von 1 bis limit - number + 2, wo nach einem ULAM-Mehrling gesucht wird in der Schrittweite 1.
@@ -83,8 +83,8 @@ int ulam_multiples(int limit, int number)
 	 */
 	for (int index = 1; index < limit - number + 2; index++)
 	{
-		int count = 1;			/* Anzahl der Werte im aktuellen Mehrling */
-		bool isTwin = true;		/* Definiert die Abbruchbedingung für die for-Schleife */
+		int count = 1;            /* Anzahl der Werte im aktuellen Mehrling */
+		bool isTwin = true;        /* Definiert die Abbruchbedingung für die for-Schleife */
 
 		/*
 		 * Überprüft paarweise in einem Sub-Intervall mit der Größe number, ob alle ULAM-Werte gleich sind.
