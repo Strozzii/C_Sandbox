@@ -88,10 +88,14 @@ int ulam_multiples(int limit, int number)
 		if (ulam_max(i) == ulam_max(i + 1))
 		{
 			count++;
-			/* Falls count der gesuchten Anzahl entspricht, dann speichere den Startindex des Mehrlings. */
+			/*
+			 * Falls count der gesuchten Anzahl entspricht, dann speichere den Startindex des Mehrlings.
+			 * Reduziere count um 1, um eventuelle Sub-Mehrlinge zu finden.
+			 */
 			if (count == number)
 			{
 				output = i - number + 2;
+				count--;
 			}
 		}
 		else

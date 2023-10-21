@@ -35,6 +35,9 @@ int main()
 	printf("%d\n", ulam_multiples(1000, 3));
 	printf("%d\n", ulam_multiples(108, 3));
 	printf("%d\n", ulam_multiples(391, 6));
+	printf("%d\n", ulam_multiples(115, 2));
+
+
 
 }
 
