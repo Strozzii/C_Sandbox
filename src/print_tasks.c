@@ -1,9 +1,4 @@
-//
-// Created by stroz on 22.10.2023.
-//
-
 #include "print_tasks.h"
-#include "praktikum_1/ppr_prak1.h"
 
 void prak1(bool a, bool b, bool c)
 {

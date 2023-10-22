@@ -1,12 +1,25 @@
-//
-// Created by stroz on 22.10.2023.
-//
-
+/**
+ * @file
+ * In diesem Modul werden die Funktionen aus den einzelnen Praktikumsaufgaben geprintet.
+ *
+ * @author Dennis Stroz
+ * @date 2023-10-22
+ */
 #include <stdio.h>
 #include <stdbool.h>
-#ifndef _PRINT_TASKS_H_
-#define _PRINT_TASKS_H_
+#include "praktikum_1/ppr_prak1.h"
 
-#endif //_PRINT_TASKS_H_
+#ifndef PRINT_TASKS_H_
+#define PRINT_TASKS_H_
 
+#endif //PRINT_TASKS_H_
+
+
+/**
+ * Diese Funktion printet die Lösungen für die erste Praktikumsaufgabe.
+ *
+ * @param a: True, wenn die Aufgabe zu ulam_max geprintet werden soll.
+ * @param b: True, wenn die Aufgabe zu ulam_twins geprintet werden soll.
+ * @param c: True, wenn die Aufgabe zu ulam_multiples geprintet werden soll.
+ */
 void prak1(bool a, bool b, bool c);

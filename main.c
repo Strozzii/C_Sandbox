@@ -6,7 +6,6 @@
  * @author Dennis Stroz
  * @date 2023-10-21
  */
-
 #include "src/print_tasks.h"
 
 /**
