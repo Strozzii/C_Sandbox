@@ -4,4 +4,6 @@ project(PPR C)
 set(CMAKE_C_STANDARD 11)
 
 add_executable(PPR main.c
-        src/ppr_prak1.c)
+        src/praktikum_1/ppr_prak1.c
+        src/print_tasks.c
+        src/print_tasks.h)
