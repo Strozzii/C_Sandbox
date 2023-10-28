@@ -21,3 +21,13 @@ X__XXX__  --> Drilling Ja/Nein?
 
 2023-10-21: Sub-Mehrlinge werden jetzt auch betrachtet. Code läuft mit einer Komplexität von O(n) und alle Tests haben
 funktioniert.
+
+## Praktikumsaufgabe 2
+
+### Print_Matrix
+
+Läuft perfekt!
+
+### Get_Determinant
+
+Funktioniert, allerdings sollte bedacht werden, was bei einem Überlauf passiert.
