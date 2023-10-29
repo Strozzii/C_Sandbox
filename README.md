@@ -19,7 +19,7 @@ Außerdem besteht die Frage, ob z.B ein Drilling in einem Vierling existieren ka
 Wenn ich nach einem Drilling suche:
 X__XXX__  --> Drilling Ja/Nein?
 
-2023-10-21: Sub-Mehrlinge werden jetzt auch betrachtet. Code läuft mit einer Komplexität von O(n) und alle Tests haben
+2023-10-21: Sub-Mehrlinge werden jetzt auch betrachtet. Code läuft mit einer Komplexität von O(n²) und alle Tests haben
 funktioniert.
 
 ## Praktikumsaufgabe 2
