@@ -5,11 +5,13 @@
  * @author Dennis Stroz
  * @date 2023-10-28
  */
+
+#include <stdio.h>
+
 #ifndef PROZEDURALE_PROGRAMMIERUNG_PPR_PRAK2_H
 #define PROZEDURALE_PROGRAMMIERUNG_PPR_PRAK2_H
 #define MAX_SIZE 10  /* Maximale Größe der quadratischen Matrizen */
 
-#include <stdio.h>
 
 #endif //PROZEDURALE_PROGRAMMIERUNG_PPR_PRAK2_H
 

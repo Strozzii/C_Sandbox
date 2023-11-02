@@ -128,3 +128,7 @@ void prak2(bool a, bool b)
 	}
 
 }
+
+void prak3(){
+	print_generation();
+}

@@ -9,6 +9,7 @@
 #include <stdbool.h>
 #include "praktikum_1/ppr_prak1.h"
 #include "praktikum_2/ppr_prak2.h"
+#include "praktikum_3/ppr_prak3.h"
 
 #ifndef PRINT_TASKS_H_
 #define PRINT_TASKS_H_
@@ -32,3 +33,5 @@ void prak1(bool a, bool b, bool c);
  * @param b: True, wenn die Aufgabe zu Determinaten von Matrizen geprintet werden soll.
  */
 void prak2(bool a, bool b);
+
+void prak3();
