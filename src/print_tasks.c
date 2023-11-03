@@ -129,6 +129,22 @@ void prak2(bool a, bool b)
 
 }
 
-void prak3(){
-	print_generation();
+void prak3(bool test, bool blinker, bool glider, bool octagon)
+{
+	if(blinker)
+	{
+		set_generation_from_string("0000000000 0000000000 0000000000 0010000000 0010000000 0010000000 0000000000 0000000000 0000000000 0000000000");
+		game_of_life(10);
+	}
+	if(glider)
+	{
+		set_generation_from_string("0100000000 0010000000 1110000000 0000000000 0000000000 0000000000 0000000000 0000000000 0000000000 0000000000");
+		game_of_life(50);
+	}
+	if(octagon)
+	{
+		set_generation_from_string("0001100000 0010010000 0100001000 1000000100 1000000100 0100001000 0010010000 0001100000 0000000000 0000000000");
+		game_of_life(50);
+	}
+
 }

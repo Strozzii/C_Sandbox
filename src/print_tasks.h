@@ -34,4 +34,4 @@ void prak1(bool a, bool b, bool c);
  */
 void prak2(bool a, bool b);
 
-void prak3();
+void prak3(bool test, bool blinker, bool glider, bool octagon);
