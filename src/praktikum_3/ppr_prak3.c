@@ -1,157 +1,168 @@
-//
-// Created by de56008 on 02.11.2023.
-//
-
 #include "ppr_prak3.h"
 
-char generation[ALL_ROWS][ALL_COLS];  /* Globale Variable zur Darstellung der Generation */
+
+/* Konstanten zur Festlegung der Spielfeldgröße */
+#define ALL_ROWS 10
+#define ALL_COLS 10
+
+/* Globale Variable zur Speicherung der aktuellen Generation */
+unsigned char generation[(ALL_ROWS * ALL_COLS + 7) / 8];
+
+void set_generation_from_string(char string[])
+{
+	for (int i = 0; i < (ALL_ROWS * ALL_COLS + 7) / 8; i++)
+	{
+		generation[i] = 0;
+	}
+	int rows = ALL_ROWS;
+	int cols = ALL_COLS;
+	for (int i = 0; i < rows * cols; i++)
+	{
+		int byte_index = i / 8;
+		int bit_index = i % 8;
+		generation[byte_index] |= (string[i] == '1' ? (1 << bit_index) : 0);
+	}
+}
 
 void print_generation(void)
 {
-	for (int row = 0; row < ALL_ROWS; row++)
-	{
-		printf("+");
-		for (int col = 0; col < ALL_COLS; col++)
-		{
-			printf("---+");
-		}
-		printf("\n");
-
-		printf("|");
-		for (int col = 0; col < ALL_COLS; col++)
-		{
-			/* Prüfe, ob an Stelle der aktuellen Stelle eine 1 ist */
-			if (generation[row][col])
-			{
-				printf(" o |");
-			}
-			else
-			{
-				printf("   |");
-			}
-		}
-		printf("\n");
-	}
-
 	printf("+");
 	for (int col = 0; col < ALL_COLS; col++)
 	{
 		printf("---+");
 	}
 	printf("\n");
-}
-
-void set_generation_from_string(char string[])
-{
-	int row = 0;
-	int col = 0;
-
-	for (int i = 0; i < ALL_ROWS * ALL_COLS; i++)
+	for (int row = 0; row < ALL_ROWS; row++)
 	{
-		char c = string[i];
-		if (c == '0' || c == '1')
+		for (int col = 0; col < ALL_COLS; col++)
 		{
-			generation[row][col] = c - '0'; /* Konvertiere Zeichen '0' oder '1' in Zahl 0 oder 1 */
-			col++;
-			if (col == ALL_COLS)
-			{
-				col = 0;
-				row++;
-			}
+			int index = row * ALL_COLS + col;
+			int byte_index = index / 8;
+			int bit_index = index % 8;
+			char cell = (generation[byte_index] & (1 << bit_index)) ? 'o' : ' ';
+			printf("| %c ", cell);
 		}
+		printf("|\n+");
+		for (int col = 0; col < ALL_COLS; col++)
+		{
+			printf("---+");
+		}
+		printf("\n");
 	}
 }
 
 void get_generation_as_string(char string[])
 {
+	int rows = ALL_ROWS;
+	int cols = ALL_COLS;
 	int index = 0;
 
-	for (int row = 0; row < ALL_ROWS; row++)
+	for (int row = 0; row < rows; row++)
 	{
-		for (int col = 0; col < ALL_COLS; col++)
+		for (int col = 0; col < cols; col++)
 		{
-			string[index] = generation[row][col] + '0'; /* Konvertiere Zahl 0 oder 1 in Zeichen '0' oder '1' */
+			int byte_index = (row * cols + col) / 8;
+			int bit_index = (row * cols + col) % 8;
+			char cell = (generation[byte_index] & (1 << bit_index)) ? '1' : '0';
+			string[index] = cell;
 			index++;
 		}
 	}
+
+	string[index] = '\0'; /* Nullterminierung der Zeichenkette */
 }
 
 bool set_next_generation(void)
 {
+	/* Kopieren der aktuellen Generation, um die nächste Generation zu berechnen */
+	unsigned char next_generation[(ALL_ROWS * ALL_COLS + 7) / 8];
+	memcpy(next_generation, generation, sizeof(generation));
+
 	bool generation_changed = false;
 
-	unsigned char temp_generation[ALL_ROWS][ALL_COLS]; /* Kopie der aktuellen Generation */
+	int rows = ALL_ROWS;
+	int cols = ALL_COLS;
 
-	for (int row = 0; row < ALL_ROWS; row++)
+	for (int row = 0; row < rows; row++)
 	{
-		for (int col = 0; col < ALL_COLS; col++)
+		for (int col = 0; col < cols; col++)
 		{
-			temp_generation[row][col] = generation[row][col]; /* Kopie erstellen */
-		}
-	}
+			int index = row * cols + col;
+			int byte_index = index / 8;
+			int bit_index = index % 8;
 
-	for (int row = 0; row < ALL_ROWS; row++)
-	{
-		for (int col = 0; col < ALL_COLS; col++)
-		{
-			int neighbors = 0;
-
-			/* Anzahl der lebenden Nachbarn ermitteln */
-			for (int dr = -1; dr <= 1; dr++)
+			/* Zählen der lebenden Nachbarn */
+			int live_neighbors = 0;
+			for (int i = -1; i <= 1; i++)
 			{
-				for (int dc = -1; dc <= 1; dc++)
+				for (int j = -1; j <= 1; j++)
 				{
-					if (dr == 0 && dc == 0) continue; /* Die Zelle selbst nicht zählen */
-					int r = row + dr;
-					int c = col + dc;
-					if (r >= 0 && r < ALL_ROWS && c >= 0 && c < ALL_COLS)
+					/* Überspringe das aktuelle Feld */
+					if (i == 0 && j == 0)
+						continue;
+
+					int neighbor_row = row + i;
+					int neighbor_col = col + j;
+
+					if (neighbor_row >= 0 && neighbor_row < rows && neighbor_col >= 0 && neighbor_col < cols)
 					{
-						neighbors += temp_generation[r][c];
+						int neighbor_index = neighbor_row * cols + neighbor_col;
+						int neighbor_byte_index = neighbor_index / 8;
+						int neighbor_bit_index = neighbor_index % 8;
+
+						if (generation[neighbor_byte_index] & (1 << neighbor_bit_index))
+							live_neighbors++;
 					}
 				}
 			}
 
-			/* Überlebens- und Geburtsregeln anwenden */
-			if (temp_generation[row][col] == 1)
+			/* Anwenden der Regeln des Game of Life */
+			if (generation[byte_index] & (1 << bit_index))
 			{
-				if (neighbors < 2 || neighbors > 3)
+				/* Zelle ist lebendig */
+				if (live_neighbors < 2 || live_neighbors > 3)
 				{
-					generation[row][col] = 0; // Zelle stirbt
-					if (generation_changed == false)
-					{
-						generation_changed = true;
-					}
+					/* Zelle stirbt wegen Unter- oder Überbevölkerung */
+					next_generation[byte_index] &= ~(1 << bit_index);
+					generation_changed = true;
 				}
 			}
 			else
 			{
-				if (neighbors == 3)
+				/* Zelle ist tot */
+				if (live_neighbors == 3)
 				{
-					generation[row][col] = 1; /* Zelle wird geboren */
-					if (generation_changed == false)
-					{
-						generation_changed = true;
-					}
+					/* Zelle wird belebt */
+					next_generation[byte_index] |= (1 << bit_index);
+					generation_changed = true;
 				}
 			}
 		}
 	}
+
+	/* Kopieren der berechneten nächsten Generation in die globale Variable */
+	memcpy(generation, next_generation, sizeof(generation));
 
 	return generation_changed;
 }
 
 void game_of_life(int max_generations)
 {
-	for (int generation_num = 0; generation_num <= max_generations; generation_num++)
+	int generation_number = 0;
+
+	for (; generation_number <= max_generations; generation_number++)
 	{
-		printf("Generation %d:\n", generation_num);
+		/* Ausgabe der aktuellen Generation mit ihrer Nummer */
+		printf("Generation %d:\n", generation_number);
 		print_generation();
 
-		bool changed = set_next_generation();
+		/* Berechnen der nächsten Generation */
+		bool generation_changed = set_next_generation();
 
-		if (!changed)
+		/* Wenn sich die Generation nicht mehr ändert, brich die Schleife ab */
+		if (!generation_changed)
 		{
-			printf("Generation stabil, das Spiel endet.\n");
+			printf("Generation stoppt!\n");
 			break;
 		}
 	}

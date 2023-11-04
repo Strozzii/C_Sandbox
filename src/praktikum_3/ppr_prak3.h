@@ -1,15 +1,17 @@
-//
-// Created by de56008 on 02.11.2023.
-//
-#include <stdbool.h>
+/**
+ * @file
+ * In diesem Modul werden die Aufgaben zu "Conway's Game of Life" umgesetzt.
+ *
+ * @author Dennis Stroz
+ * @date 2023-11-04
+ */
+
 #include <stdio.h>
+#include <stdbool.h>
+#include <string.h>
 
 #ifndef PROZEDURALE_PROGRAMMIERUNG_PPR_PRAK3_H
 #define PROZEDURALE_PROGRAMMIERUNG_PPR_PRAK3_H
-
-/* Definition der Spielfeldgröße */
-#define ALL_ROWS 10
-#define ALL_COLS 10
 
 #endif //PROZEDURALE_PROGRAMMIERUNG_PPR_PRAK3_H
 

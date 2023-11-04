@@ -34,4 +34,12 @@ void prak1(bool a, bool b, bool c);
  */
 void prak2(bool a, bool b);
 
+/**
+ * Die Funktion printet zur dritten Praktikumsaufgabe einige Test-Samples.
+ *
+ * @param test: Diagonale. Von oben links nach unten rechts.
+ * @param blinker: Blinker, was sich unendlich entwickeln kann.
+ * @param glider: Form, was von oben links nach unten rechts wandert.
+ * @param octagon: Oktagon was sich öffnet und schliesst.
+ */
 void prak3(bool test, bool blinker, bool glider, bool octagon);
