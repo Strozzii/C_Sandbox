@@ -31,3 +31,7 @@ Läuft perfekt!
 ### Get_Determinant
 
 Funktioniert, allerdings sollte bedacht werden, was bei einem Überlauf passiert.
+
+## Praktikumsaufgabe 3
+
+Funktioniert mit Bit-Manipulation!
