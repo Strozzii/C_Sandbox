@@ -19,6 +19,6 @@ int main()
 
 	//prak2(true, true);
 
-	prak3(false, false, false, true);
+	prak3(false, false, true, false);
 }
 

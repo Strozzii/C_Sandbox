@@ -5,18 +5,16 @@
 #define ALL_ROWS 10
 #define ALL_COLS 10
 
+#define ALL_BYTES ((ALL_ROWS * ALL_COLS + 7) / 8)
+
 /* Globale Variable zur Speicherung der aktuellen Generation */
-unsigned char generation[(ALL_ROWS * ALL_COLS + 7) / 8];
+unsigned char generation[ALL_BYTES];
 
 void set_generation_from_string(char string[])
 {
-	for (int i = 0; i < (ALL_ROWS * ALL_COLS + 7) / 8; i++)
-	{
-		generation[i] = 0;
-	}
-	int rows = ALL_ROWS;
-	int cols = ALL_COLS;
-	for (int i = 0; i < rows * cols; i++)
+	memset(generation, 0, ALL_BYTES);
+
+	for (int i = 0; i < ALL_ROWS * ALL_COLS; i++)
 	{
 		int byte_index = i / 8;
 		int bit_index = i % 8;
@@ -53,16 +51,15 @@ void print_generation(void)
 
 void get_generation_as_string(char string[])
 {
-	int rows = ALL_ROWS;
-	int cols = ALL_COLS;
+
 	int index = 0;
 
-	for (int row = 0; row < rows; row++)
+	for (int row = 0; row < ALL_ROWS; row++)
 	{
-		for (int col = 0; col < cols; col++)
+		for (int col = 0; col < ALL_COLS; col++)
 		{
-			int byte_index = (row * cols + col) / 8;
-			int bit_index = (row * cols + col) % 8;
+			int byte_index = (row * ALL_COLS + col) / 8;
+			int bit_index = (row * ALL_COLS + col) % 8;
 			char cell = (generation[byte_index] & (1 << bit_index)) ? '1' : '0';
 			string[index] = cell;
 			index++;
@@ -80,41 +77,16 @@ bool set_next_generation(void)
 
 	bool generation_changed = false;
 
-	int rows = ALL_ROWS;
-	int cols = ALL_COLS;
-
-	for (int row = 0; row < rows; row++)
+	for (int row = 0; row < ALL_ROWS; row++)
 	{
-		for (int col = 0; col < cols; col++)
+		for (int col = 0; col < ALL_COLS; col++)
 		{
-			int index = row * cols + col;
+			int index = row * ALL_COLS + col;
 			int byte_index = index / 8;
 			int bit_index = index % 8;
 
 			/* Zählen der lebenden Nachbarn */
-			int live_neighbors = 0;
-			for (int i = -1; i <= 1; i++)
-			{
-				for (int j = -1; j <= 1; j++)
-				{
-					/* Überspringe das aktuelle Feld */
-					if (i == 0 && j == 0)
-						continue;
-
-					int neighbor_row = row + i;
-					int neighbor_col = col + j;
-
-					if (neighbor_row >= 0 && neighbor_row < rows && neighbor_col >= 0 && neighbor_col < cols)
-					{
-						int neighbor_index = neighbor_row * cols + neighbor_col;
-						int neighbor_byte_index = neighbor_index / 8;
-						int neighbor_bit_index = neighbor_index % 8;
-
-						if (generation[neighbor_byte_index] & (1 << neighbor_bit_index))
-							live_neighbors++;
-					}
-				}
-			}
+			int live_neighbors = get_live_neighbors(row, col);
 
 			/* Anwenden der Regeln des Game of Life */
 			if (generation[byte_index] & (1 << bit_index))
@@ -141,7 +113,7 @@ bool set_next_generation(void)
 	}
 
 	/* Kopieren der berechneten nächsten Generation in die globale Variable */
-	memcpy(generation, next_generation, sizeof(generation));
+	memcpy(generation, next_generation, ALL_BYTES);
 
 	return generation_changed;
 }
@@ -150,7 +122,7 @@ void game_of_life(int max_generations)
 {
 	int generation_number = 0;
 
-	for (; generation_number <= max_generations; generation_number++)
+	for (; generation_number < max_generations; generation_number++)
 	{
 		/* Ausgabe der aktuellen Generation mit ihrer Nummer */
 		printf("Generation %d:\n", generation_number);
@@ -167,3 +139,34 @@ void game_of_life(int max_generations)
 		}
 	}
 }
+
+int get_live_neighbors(int row, int col)
+{
+	int live_neighbors = 0;
+	for (int i = -1; i <= 1; i++)
+	{
+		for (int j = -1; j <= 1; j++)
+		{
+			/* Überspringe das aktuelle Feld */
+			if (i == 0 && j == 0)
+				continue;
+
+			int neighbor_row = row + i;
+			int neighbor_col = col + j;
+
+			if (neighbor_row >= 0 && neighbor_row < ALL_ROWS && neighbor_col >= 0 && neighbor_col < ALL_COLS)
+			{
+				int neighbor_index = neighbor_row * ALL_COLS + neighbor_col;
+				int neighbor_byte_index = neighbor_index / 8;
+				int neighbor_bit_index = neighbor_index % 8;
+
+				if (generation[neighbor_byte_index] & (1 << neighbor_bit_index))
+					live_neighbors++;
+			}
+		}
+	}
+
+	return live_neighbors;
+}
+
+

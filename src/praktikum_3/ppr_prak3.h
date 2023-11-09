@@ -49,3 +49,15 @@ bool set_next_generation(void);
  * @param max_generations: Anzahl der zu berechnenden Generationen.
  */
 void game_of_life(int max_generations);
+
+
+/**
+ * Diese Hilfsfunktion zählt die lebenden Nachbarn eines Bits.
+ *
+ * @param row: Zeile des Bits
+ * @param col: Spalte des Bits
+ * @param rows: Zeilengröße des Spielfeldes
+ * @param cols: Spaltengröße des Spielfeldes
+ * @return Anzahl der lebenden Nachbarn die sich ringsrum des Bits befinden.
+ */
+int get_live_neighbors(int row, int col);
