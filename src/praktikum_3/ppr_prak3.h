@@ -27,7 +27,7 @@ void print_generation(void);
  * Eine '1' bedeutet, dass die Zelle ein Lebewesen enthält, und eine '0', dass die Zelle kein Lebewesen enthält.
  * Ein Beispiel für eine Generation wäre: "111000001000010111000100000010".
  */
-void set_generation_from_string(char string[]);
+void set_generation_from_string(const char string[]);
 
 /**
  * Diese Funktion liefert die aktuelle Generation als Zeichenkette zurück.
@@ -56,8 +56,7 @@ void game_of_life(int max_generations);
  *
  * @param row: Zeile des Bits
  * @param col: Spalte des Bits
- * @param rows: Zeilengröße des Spielfeldes
- * @param cols: Spaltengröße des Spielfeldes
+ *
  * @return Anzahl der lebenden Nachbarn die sich ringsrum des Bits befinden.
  */
 int get_live_neighbors(int row, int col);
