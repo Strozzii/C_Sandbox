@@ -1,0 +1,108 @@
+\doxysection{E\+:/\+PPR/src/praktikum\+\_\+3/ppr\+\_\+prak3.h File Reference}
+\hypertarget{ppr__prak3_8h}{}\label{ppr__prak3_8h}\index{E:/PPR/src/praktikum\_3/ppr\_prak3.h@{E:/PPR/src/praktikum\_3/ppr\_prak3.h}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{ppr__prak3_8h_a8fcf0ef33f157ac4c17e9fd2cff738dd}{print\+\_\+generation}} (void)
+\item 
+void \mbox{\hyperlink{ppr__prak3_8h_aac39245cf852ef3d43459da7703c6d30}{set\+\_\+generation\+\_\+from\+\_\+string}} (const char string\mbox{[}$\,$\mbox{]})
+\item 
+void \mbox{\hyperlink{ppr__prak3_8h_a8052a74a4837fe7d2e3a6cb6057fdb61}{get\+\_\+generation\+\_\+as\+\_\+string}} (char string\mbox{[}$\,$\mbox{]})
+\item 
+bool \mbox{\hyperlink{ppr__prak3_8h_a13816536d986c50bd2acf229e1c3d15f}{set\+\_\+next\+\_\+generation}} (void)
+\item 
+void \mbox{\hyperlink{ppr__prak3_8h_ac05cc0a1bc67d7abf53f8bfa49c0f1bb}{game\+\_\+of\+\_\+life}} (int max\+\_\+generations)
+\item 
+int \mbox{\hyperlink{ppr__prak3_8h_a5a0afd1b34673814df3e10778d802ca8}{get\+\_\+live\+\_\+neighbors}} (int row, int col)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+In diesem Modul werden die Aufgaben zu "{}\+Conway\textquotesingle{}s Game of Life"{} umgesetzt.
+
+\begin{DoxyAuthor}{Author}
+Dennis Stroz 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2023-\/11-\/04 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{ppr__prak3_8h_ac05cc0a1bc67d7abf53f8bfa49c0f1bb}\label{ppr__prak3_8h_ac05cc0a1bc67d7abf53f8bfa49c0f1bb} 
+\index{ppr\_prak3.h@{ppr\_prak3.h}!game\_of\_life@{game\_of\_life}}
+\index{game\_of\_life@{game\_of\_life}!ppr\_prak3.h@{ppr\_prak3.h}}
+\doxysubsubsection{\texorpdfstring{game\_of\_life()}{game\_of\_life()}}
+{\footnotesize\ttfamily void game\+\_\+of\+\_\+life (\begin{DoxyParamCaption}\item[{int}]{max\+\_\+generations }\end{DoxyParamCaption})}
+
+Diese Funktion berechnet n-\/mal die nächsten Generationen und gibt Diese in der Konsole aus.
+
+
+\begin{DoxyParams}{Parameters}
+{\em max\+\_\+generations} & Anzahl der zu berechnenden Generationen. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{ppr__prak3_8h_a8052a74a4837fe7d2e3a6cb6057fdb61}\label{ppr__prak3_8h_a8052a74a4837fe7d2e3a6cb6057fdb61} 
+\index{ppr\_prak3.h@{ppr\_prak3.h}!get\_generation\_as\_string@{get\_generation\_as\_string}}
+\index{get\_generation\_as\_string@{get\_generation\_as\_string}!ppr\_prak3.h@{ppr\_prak3.h}}
+\doxysubsubsection{\texorpdfstring{get\_generation\_as\_string()}{get\_generation\_as\_string()}}
+{\footnotesize\ttfamily void get\+\_\+generation\+\_\+as\+\_\+string (\begin{DoxyParamCaption}\item[{char}]{string\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+Diese Funktion liefert die aktuelle Generation als Zeichenkette zurück.
+
+
+\begin{DoxyParams}{Parameters}
+{\em string} & Variable, in der die Zeichenkette abgespeichert werden soll. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{ppr__prak3_8h_a5a0afd1b34673814df3e10778d802ca8}\label{ppr__prak3_8h_a5a0afd1b34673814df3e10778d802ca8} 
+\index{ppr\_prak3.h@{ppr\_prak3.h}!get\_live\_neighbors@{get\_live\_neighbors}}
+\index{get\_live\_neighbors@{get\_live\_neighbors}!ppr\_prak3.h@{ppr\_prak3.h}}
+\doxysubsubsection{\texorpdfstring{get\_live\_neighbors()}{get\_live\_neighbors()}}
+{\footnotesize\ttfamily int get\+\_\+live\+\_\+neighbors (\begin{DoxyParamCaption}\item[{int}]{row,  }\item[{int}]{col }\end{DoxyParamCaption})}
+
+Diese Hilfsfunktion zählt die lebenden Nachbarn eines Bits.
+
+
+\begin{DoxyParams}{Parameters}
+{\em row} & Zeile des Bits \\
+\hline
+{\em col} & Spalte des Bits\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Anzahl der lebenden Nachbarn die sich ringsrum des Bits befinden. 
+\end{DoxyReturn}
+\Hypertarget{ppr__prak3_8h_a8fcf0ef33f157ac4c17e9fd2cff738dd}\label{ppr__prak3_8h_a8fcf0ef33f157ac4c17e9fd2cff738dd} 
+\index{ppr\_prak3.h@{ppr\_prak3.h}!print\_generation@{print\_generation}}
+\index{print\_generation@{print\_generation}!ppr\_prak3.h@{ppr\_prak3.h}}
+\doxysubsubsection{\texorpdfstring{print\_generation()}{print\_generation()}}
+{\footnotesize\ttfamily void print\+\_\+generation (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Diese Funktion gibt den aktuellen Zustand der Generation in der globalen Variable "{}generatíon"{} aus. \Hypertarget{ppr__prak3_8h_aac39245cf852ef3d43459da7703c6d30}\label{ppr__prak3_8h_aac39245cf852ef3d43459da7703c6d30} 
+\index{ppr\_prak3.h@{ppr\_prak3.h}!set\_generation\_from\_string@{set\_generation\_from\_string}}
+\index{set\_generation\_from\_string@{set\_generation\_from\_string}!ppr\_prak3.h@{ppr\_prak3.h}}
+\doxysubsubsection{\texorpdfstring{set\_generation\_from\_string()}{set\_generation\_from\_string()}}
+{\footnotesize\ttfamily void set\+\_\+generation\+\_\+from\+\_\+string (\begin{DoxyParamCaption}\item[{const char}]{string\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+Diese Funktion initialisiert die globale Variable "{}generation"{} mit einer Anfangsgeneration mittels Zeichenkette.
+
+
+\begin{DoxyParams}{Parameters}
+{\em string} & Zeichenkette, die die Generation beschreibt. Sie enthält nacheinander die Zeilen der Generation. Eine \textquotesingle{}1\textquotesingle{} bedeutet, dass die Zelle ein Lebewesen enthält, und eine \textquotesingle{}0\textquotesingle{}, dass die Zelle kein Lebewesen enthält. Ein Beispiel für eine Generation wäre\+: "{}111000001000010111000100000010"{}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{ppr__prak3_8h_a13816536d986c50bd2acf229e1c3d15f}\label{ppr__prak3_8h_a13816536d986c50bd2acf229e1c3d15f} 
+\index{ppr\_prak3.h@{ppr\_prak3.h}!set\_next\_generation@{set\_next\_generation}}
+\index{set\_next\_generation@{set\_next\_generation}!ppr\_prak3.h@{ppr\_prak3.h}}
+\doxysubsubsection{\texorpdfstring{set\_next\_generation()}{set\_next\_generation()}}
+{\footnotesize\ttfamily bool set\+\_\+next\+\_\+generation (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Diese Funktion berechnet ausgehend von der aktuellen Generation in "{}generation"{} die nächste Generation.
+
+\begin{DoxyReturn}{Returns}
+Liefert True zurück, wenn die nächste Generation sich von der aktuellen unterscheidet, sonst False. 
+\end{DoxyReturn}

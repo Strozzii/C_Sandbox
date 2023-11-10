@@ -1,0 +1,63 @@
+\doxysection{E\+:/\+PPR/src/praktikum\+\_\+2/ppr\+\_\+prak2.h File Reference}
+\hypertarget{ppr__prak2_8h}{}\label{ppr__prak2_8h}\index{E:/PPR/src/praktikum\_2/ppr\_prak2.h@{E:/PPR/src/praktikum\_2/ppr\_prak2.h}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{ppr__prak2_8h_a0592dba56693fad79136250c11e5a7fe}\label{ppr__prak2_8h_a0592dba56693fad79136250c11e5a7fe} 
+\#define {\bfseries MAX\+\_\+\+SIZE}~10  /\texorpdfstring{$\ast$}{*} Maximale Größe der quadratischen Matrizen \texorpdfstring{$\ast$}{*}/
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{ppr__prak2_8h_a1dee0c4894d4ed43afd4e8687c9afd71}{print\+\_\+matrix}} (double matrix\mbox{[}MAX\+\_\+\+SIZE\mbox{]}\mbox{[}MAX\+\_\+\+SIZE\mbox{]}, int size)
+\item 
+double \mbox{\hyperlink{ppr__prak2_8h_a7f819ad9dc1a0ab8ba97189b426251ce}{get\+\_\+determinant}} (double matrix\mbox{[}MAX\+\_\+\+SIZE\mbox{]}\mbox{[}MAX\+\_\+\+SIZE\mbox{]}, int size)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+In diesem Modul werden die Aufgaben zu Matrizen und Determinanten umgesetzt. Dieses Blatt umfasst zwei Aufgaben.
+
+\begin{DoxyAuthor}{Author}
+Dennis Stroz 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2023-\/10-\/28 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{ppr__prak2_8h_a7f819ad9dc1a0ab8ba97189b426251ce}\label{ppr__prak2_8h_a7f819ad9dc1a0ab8ba97189b426251ce} 
+\index{ppr\_prak2.h@{ppr\_prak2.h}!get\_determinant@{get\_determinant}}
+\index{get\_determinant@{get\_determinant}!ppr\_prak2.h@{ppr\_prak2.h}}
+\doxysubsubsection{\texorpdfstring{get\_determinant()}{get\_determinant()}}
+{\footnotesize\ttfamily double get\+\_\+determinant (\begin{DoxyParamCaption}\item[{double}]{matrix\mbox{[}\+MAX\+\_\+\+SIZE\mbox{]}\mbox{[}\+MAX\+\_\+\+SIZE\mbox{]},  }\item[{int}]{size }\end{DoxyParamCaption})}
+
+Diese Funktion berechnet die Determinante einer n x n -\/ Matrix mithilfe des Laplaceschen Entwicklungssatz.
+
+
+\begin{DoxyParams}{Parameters}
+{\em matrix} & n x n -\/ Matrix zu der die Determinante berechnet werden soll. \\
+\hline
+{\em size} & Größe n der n x n -\/ Matrix.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Gibt die Determinante zurück. Bei unsinnigen Eingaben wird 0.\+0 zurückgegeben und es wird eine Fehlermeldung in der Konsole ausgegeben. 
+\end{DoxyReturn}
+\Hypertarget{ppr__prak2_8h_a1dee0c4894d4ed43afd4e8687c9afd71}\label{ppr__prak2_8h_a1dee0c4894d4ed43afd4e8687c9afd71} 
+\index{ppr\_prak2.h@{ppr\_prak2.h}!print\_matrix@{print\_matrix}}
+\index{print\_matrix@{print\_matrix}!ppr\_prak2.h@{ppr\_prak2.h}}
+\doxysubsubsection{\texorpdfstring{print\_matrix()}{print\_matrix()}}
+{\footnotesize\ttfamily void print\+\_\+matrix (\begin{DoxyParamCaption}\item[{double}]{matrix\mbox{[}\+MAX\+\_\+\+SIZE\mbox{]}\mbox{[}\+MAX\+\_\+\+SIZE\mbox{]},  }\item[{int}]{size }\end{DoxyParamCaption})}
+
+Diese Funktion gibt in der Konsole die Werte einer n x n -\/ Matrix aus.
+
+
+\begin{DoxyParams}{Parameters}
+{\em matrix} & Auszugebene Matrix. \\
+\hline
+{\em size} & Größe n der n x n -\/ Matrix. \\
+\hline
+\end{DoxyParams}
